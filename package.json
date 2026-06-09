@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/sync-root-build.mjs",
+    "build:temp": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
