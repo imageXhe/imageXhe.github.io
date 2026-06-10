@@ -422,6 +422,10 @@ a:focus-visible {
   display: none;
 }
 
+.hero__location-image {
+  display: none;
+}
+
 .about__print-location-image {
   display: none;
 }
@@ -916,6 +920,451 @@ a:focus-visible {
   color: var(--project-text, var(--text));
 }
 
+/* Screen-only mirrors for details that were originally print-only. */
+html[data-mode='screen'] .background-credit {
+  display: block;
+  position: absolute;
+  right: clamp(1rem, 3vw, 2.5rem);
+  bottom: clamp(0.9rem, 2.5vh, 1.6rem);
+  z-index: 4;
+  margin: 0;
+  color: #c89625;
+  font-family: Georgia, "Times New Roman", var(--font-display), serif;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 0 1px 0 rgba(255, 251, 245, 0.55);
+}
+
+@media screen {
+  html[data-mode='screen'] #cover .hero__location-image {
+    display: block;
+    position: absolute;
+    top: clamp(5.7rem, 11vh, 8rem);
+    right: clamp(1.2rem, 6vw, 5.5rem);
+    z-index: 1;
+    width: clamp(11rem, 24vw, 20rem);
+    height: auto;
+    border: 1px solid rgba(255, 251, 245, 0.72);
+    object-fit: cover;
+    object-position: center;
+    transform: rotate(4deg);
+    box-shadow:
+      0.75rem -0.75rem 0 rgba(244, 229, 190, 0.78),
+      -0.75rem 0.75rem 0 rgba(27, 57, 91, 0.34),
+      0 1.4rem 3rem rgba(28, 20, 12, 0.18);
+  }
+}
+
+html[data-mode='screen'] .toc-screen {
+  overflow: hidden;
+}
+
+html[data-mode='screen'] .toc-screen__inner {
+  justify-self: end;
+  width: min(100%, 61rem);
+  padding-left: clamp(0rem, 14vw, 13rem);
+}
+
+html[data-mode='screen'] .toc-screen__list {
+  gap: 0;
+}
+
+html[data-mode='screen'] .toc-screen__item {
+  display: grid;
+  grid-template-columns: clamp(2.6rem, 5vw, 4.8rem) minmax(0, 1fr);
+  align-items: baseline;
+  gap: clamp(0.9rem, 2.1vw, 1.5rem);
+  width: 100%;
+  padding: clamp(0.7rem, 1.5vh, 1.05rem) 0;
+  border-top: 1px solid rgba(34, 28, 24, 0.12);
+  font-size: 1rem;
+  line-height: 1.15;
+}
+
+html[data-mode='screen'] .toc-screen__item:last-child {
+  border-bottom: 1px solid rgba(34, 28, 24, 0.12);
+}
+
+html[data-mode='screen'] .toc-screen__item-number {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 1.2vw, 0.95rem);
+  letter-spacing: 0.18em;
+}
+
+html[data-mode='screen'] .toc-screen__item-copy {
+  display: grid;
+  gap: 0.25rem;
+}
+
+html[data-mode='screen'] .toc-screen__item-copy strong {
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.2vw, 3.55rem);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+html[data-mode='screen'] .toc-screen__item-copy small {
+  max-width: 52ch;
+  color: var(--muted);
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+html[data-mode='screen'] .toc-screen__location-image {
+  display: block;
+  position: absolute;
+  left: clamp(1rem, 5.6vw, 5rem);
+  bottom: clamp(2rem, 8vh, 5rem);
+  z-index: 1;
+  width: clamp(10rem, 23vw, 18rem);
+  height: auto;
+  border: 1px solid rgba(255, 251, 245, 0.72);
+  object-fit: cover;
+  object-position: center;
+  transform: rotate(-4deg);
+  box-shadow:
+    -0.75rem -0.75rem 0 rgba(244, 229, 190, 0.78),
+    0.75rem 0.75rem 0 rgba(27, 57, 91, 0.34),
+    0 1.4rem 3rem rgba(28, 20, 12, 0.18);
+}
+
+html[data-mode='screen'] .about--intro > .section-head,
+html[data-mode='screen'] .about--intro > .about__grid,
+html[data-mode='screen'] .about--practice > .section-head,
+html[data-mode='screen'] .about--practice > .about__grid {
+  z-index: 2;
+}
+
+html[data-mode='screen'] #about-intro .about__print-location-image {
+  display: none;
+}
+
+html[data-mode='screen'] #about-intro .about__background-note {
+  display: block;
+  position: absolute;
+  right: clamp(1rem, 3vw, 2.5rem);
+  bottom: clamp(2.7rem, 6vh, 4rem);
+  z-index: 3;
+  width: min(24rem, 44vw);
+  margin: 0;
+  color: rgba(29, 26, 24, 0.68);
+  font-family: Georgia, "Times New Roman", var(--font-display), serif;
+  font-size: clamp(0.86rem, 1vw, 1rem);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: right;
+  text-wrap: pretty;
+}
+
+html[data-mode='screen'] #about-intro .about__suitability-quote {
+  display: block;
+  position: relative;
+  z-index: 2;
+  justify-self: center;
+  max-width: min(58rem, 88vw);
+  margin: clamp(0.8rem, 2vh, 1.5rem) 0 0;
+  color: rgba(29, 26, 24, 0.72);
+  font-family: "Spencerian Script", "Spencerian Palmer Penmanship", "Edwardian Script ITC",
+    "Segoe Script", "Brush Script MT", cursive;
+  font-size: clamp(2.7rem, 6.2vw, 5.6rem);
+  line-height: 1;
+  text-align: center;
+}
+
+html[data-mode='screen'] #about-practice .about-practice__print-location-image {
+  display: block;
+  position: absolute;
+  top: clamp(6rem, 13vh, 8.5rem);
+  right: clamp(1rem, 5vw, 4.2rem);
+  z-index: 1;
+  width: clamp(12rem, 23vw, 21rem);
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  transform: rotate(10deg);
+  transform-origin: center;
+  box-shadow:
+    -0.8rem -0.8rem 0 rgba(244, 229, 190, 0.8),
+    0.8rem 0.8rem 0 rgba(102, 151, 196, 0.48),
+    0 0 0 0.25rem rgba(236, 216, 166, 0.62),
+    0 1.4rem 3.5rem rgba(28, 20, 12, 0.12);
+}
+
+html[data-mode='screen'] #graduation-design .project-page__print-inset {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.7rem;
+  border: 1px solid rgba(29, 26, 24, 0.1);
+  border-radius: 1rem;
+  background: rgba(255, 251, 245, 0.68);
+  box-shadow: 0 1.2rem 2.4rem rgba(28, 20, 12, 0.08);
+}
+
+html[data-mode='screen'] #graduation-design .project-page__print-inset-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+html[data-mode='screen'] #graduation-design .project-page__print-inset-caption {
+  margin: 0;
+  color: var(--project-muted, var(--muted));
+  font-size: 0.86rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+html[data-mode='screen'] #graduation-design .project-page__print-media-copy {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--project-line, var(--line));
+}
+
+html[data-mode='screen'] #graduation-design .project-page__print-media-copy .project-page__supplemental-section {
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(29, 26, 24, 0.1);
+  border-radius: 1rem;
+  background: rgba(255, 251, 245, 0.58);
+}
+
+html[data-mode='screen'] #graduation-design {
+  position: relative;
+  isolation: isolate;
+}
+
+html[data-mode='screen'] #graduation-design::before {
+  content: "";
+  position: absolute;
+  inset: clamp(1.2rem, 3vw, 2.2rem);
+  z-index: 0;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(110, 122, 139, 0.12), transparent 18%),
+    repeating-linear-gradient(
+      135deg,
+      rgba(122, 130, 143, 0.07) 0,
+      rgba(122, 130, 143, 0.07) 1px,
+      transparent 1px,
+      transparent 20px
+    );
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+html[data-mode='screen'] #graduation-design .project-page__shell {
+  position: relative;
+  z-index: 1;
+}
+
+html[data-mode='screen'] #simple-write {
+  --simple-write-highlight: #f4d461;
+  --simple-write-dark-gold: #8a6a16;
+  --simple-write-highlight-blue: #8fd7ff;
+  --simple-write-highlight-green: #a8e6a1;
+  --simple-write-highlight-rose: #ffb8ca;
+  --simple-write-highlight-violet: #c9b6ff;
+  --simple-write-card: rgba(12, 13, 15, 0.68);
+  --simple-write-highlight-orange: #ffc978;
+  --simple-write-highlight-limitation: #ffae86;
+  --simple-write-screen-rule: 5.2mm;
+  position: relative;
+  isolation: isolate;
+  min-height: auto;
+  align-items: start;
+  overflow: visible;
+  padding-top: clamp(5.8rem, 8vh, 6.8rem);
+  padding-bottom: clamp(3rem, 7vh, 5rem);
+  background:
+    radial-gradient(circle at 78% 18%, rgba(154, 127, 78, 0.18), transparent 18%),
+    linear-gradient(
+      135deg,
+      rgba(10, 10, 12, 1) 0,
+      rgba(25, 21, 16, 1) 34%,
+      rgba(50, 38, 22, 0.95) 62%,
+      rgba(8, 8, 10, 1) 100%
+    );
+}
+
+html[data-mode='screen'] #simple-write::before {
+  content: "";
+  position: absolute;
+  inset: 14mm 16mm 12mm 18mm;
+  z-index: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(var(--simple-write-screen-rule) - 0.22mm),
+    rgba(246, 242, 232, 0.22) calc(var(--simple-write-screen-rule) - 0.22mm),
+    rgba(246, 242, 232, 0.22) var(--simple-write-screen-rule)
+  );
+  opacity: 0.92;
+  pointer-events: none;
+}
+
+html[data-mode='screen'] #simple-write .project-page__shell {
+  position: relative;
+  z-index: 1;
+  grid-template-columns: minmax(0, 1.04fr) minmax(22rem, 0.96fr);
+  align-items: start;
+  gap: clamp(1.4rem, 3vw, 2.4rem);
+}
+
+html[data-mode='screen'] #simple-write .project-page__content {
+  order: 1;
+}
+
+html[data-mode='screen'] #simple-write .project-page__media-column {
+  order: 2;
+  gap: clamp(0.85rem, 1.7vw, 1.25rem);
+}
+
+html[data-mode='screen'] #simple-write .project-page__media {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1252 / 914;
+  background:
+    linear-gradient(180deg, rgba(246, 242, 232, 0.09), rgba(246, 242, 232, 0.03)),
+    rgba(0, 0, 0, 0.22);
+}
+
+html[data-mode='screen'] #simple-write .project-page__image {
+  object-fit: contain;
+  object-position: center;
+}
+
+html[data-mode='screen'] #simple-write .project-page__content > .project-page__philosophy {
+  display: none;
+}
+
+html[data-mode='screen'] #simple-write .project-page__philosophy--media-print,
+html[data-mode='screen'] #simple-write .project-page__limitation--media-print {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(246, 242, 232, 0.13);
+  border-radius: 1rem;
+  background:
+    linear-gradient(rgba(246, 242, 232, 0.2), rgba(246, 242, 232, 0.2)) 1.1rem 3.15rem /
+      calc(100% - 2.2rem) 1px no-repeat,
+    var(--simple-write-card);
+  box-shadow: 0 1.2rem 2.8rem rgba(0, 0, 0, 0.18);
+}
+
+html[data-mode='screen'] #simple-write .project-page__columns h3,
+html[data-mode='screen'] #simple-write .project-page__supplemental h3,
+html[data-mode='screen'] #simple-write .project-page__stack span,
+html[data-mode='screen'] #simple-write .project-page__philosophy--media-print h3,
+html[data-mode='screen'] #simple-write .project-page__limitation--media-print h3 {
+  display: inline-flex;
+  width: fit-content;
+  margin: 0 0 0.35rem;
+  padding: 0.28rem 0.75rem 0.22rem;
+  border-radius: 999px;
+  color: #251c07 !important;
+  font-family: var(--font-kai);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.12;
+}
+
+html[data-mode='screen'] #simple-write .project-page__columns > div:nth-child(1) h3 {
+  background: var(--simple-write-highlight-blue);
+}
+
+html[data-mode='screen'] #simple-write .project-page__columns > div:nth-child(2) h3 {
+  background: var(--simple-write-highlight-green);
+}
+
+html[data-mode='screen'] #simple-write .project-page__supplemental-section:nth-child(1) h3 {
+  background: var(--simple-write-highlight-rose);
+}
+
+html[data-mode='screen'] #simple-write .project-page__supplemental-section:nth-child(2) h3 {
+  background: var(--simple-write-highlight-violet);
+}
+
+html[data-mode='screen'] #simple-write .project-page__philosophy--media-print h3 {
+  background: var(--simple-write-highlight-orange);
+}
+
+html[data-mode='screen'] #simple-write .project-page__limitation--media-print h3 {
+  background: var(--simple-write-highlight-limitation);
+}
+
+html[data-mode='screen'] #simple-write .project-page__footer .project-page__stack:nth-child(1) span {
+  background: var(--simple-write-highlight);
+}
+
+html[data-mode='screen'] #simple-write .project-page__footer .project-page__stack:nth-child(2) span {
+  background: var(--simple-write-dark-gold);
+  color: #fff8d9 !important;
+}
+
+html[data-mode='screen'] #simple-write .project-page__footer .project-page__stack:nth-child(2) .tag-list li {
+  border-color: rgba(255, 248, 217, 0.28);
+  background: var(--simple-write-dark-gold);
+  color: #fff8d9;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-style: italic;
+}
+
+html[data-mode='screen'] #simple-write .project-page__philosophy,
+html[data-mode='screen'] #simple-write .project-page__limitation-copy {
+  margin: 0;
+  color: var(--project-muted, var(--muted));
+  font-size: clamp(1rem, 1.25vw, 1.08rem);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+html[data-mode='screen'] #simple-write .project-page__philosophy {
+  white-space: pre-line;
+}
+
+html[data-mode='screen'] #simple-write .project-page__philosophy-copy,
+html[data-mode='screen'] #simple-write .project-page__philosophy-quote {
+  display: block;
+}
+
+html[data-mode='screen'] #simple-write .project-page__philosophy-copy {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 400;
+}
+
+html[data-mode='screen'] #simple-write .project-page__philosophy-quote {
+  margin-top: 0.25rem;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 700;
+}
+
+html[data-mode='screen'] #desktop-animals {
+  position: relative;
+  isolation: isolate;
+  padding-bottom: clamp(2rem, 5vh, 3rem);
+}
+
+html[data-mode='screen'] #desktop-animals .project-page__shell {
+  position: relative;
+  z-index: 2;
+}
+
+@media screen {
+  html[data-mode='screen'] #desktop-animals .project-page__bottom-animals {
+    display: none;
+  }
+}
+
 @media (max-width: 1080px) {
   .about__grid,
   .project-page__shell,
@@ -928,6 +1377,29 @@ a:focus-visible {
   .project-page--media-right .project-page__media-column,
   .project-page--media-right .project-page__content {
     order: initial;
+  }
+
+  html[data-mode='screen'] .toc-screen__inner {
+    justify-self: stretch;
+    padding-left: 0;
+  }
+
+  html[data-mode='screen'] #simple-write .project-page__shell {
+    grid-template-columns: 1fr !important;
+  }
+
+  html[data-mode='screen'] #simple-write .project-page__content,
+  html[data-mode='screen'] #simple-write .project-page__media-column {
+    order: initial;
+  }
+
+  html[data-mode='screen'] .toc-screen__location-image,
+  html[data-mode='screen'] #about-practice .about-practice__print-location-image {
+    opacity: 0.18;
+  }
+
+  html[data-mode='screen'] #about-intro .about__print-location-image {
+    opacity: 0.26;
   }
 }
 
@@ -959,6 +1431,31 @@ a:focus-visible {
   .about__details--quad,
   .about__practice-cards {
     grid-template-columns: 1fr;
+  }
+
+  html[data-mode='screen'] .toc-screen__item {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  html[data-mode='screen'] .toc-screen__item-number {
+    font-size: 0.78rem;
+  }
+
+  html[data-mode='screen'] .toc-screen__location-image,
+  html[data-mode='screen'] #cover .hero__location-image,
+  html[data-mode='screen'] #about-intro .about__print-location-image,
+  html[data-mode='screen'] #about-practice .about-practice__print-location-image {
+    display: none;
+  }
+
+  html[data-mode='screen'] #about-intro .about__background-note {
+    width: calc(100% - 2rem);
+    text-align: left;
+  }
+
+  html[data-mode='screen'] #desktop-animals {
+    padding-bottom: 6.5rem;
   }
 }
 

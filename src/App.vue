@@ -11,6 +11,7 @@ import simpleWriteImage from './assets/simple-write.png'
 import desktopAnimalsImage from './assets/desktop-animals.png'
 import animalsImage from './assets/animals.png'
 import fujisanPrintImage from './assets/Fujisan.jpg'
+import hakonePrintImage from './assets/Hakone.jpg'
 import srResNetImage from './assets/SRResNet.png'
 import yokohamaPrintImage from './assets/Yokohama.jpg'
 
@@ -371,6 +372,23 @@ const printTocEntries = computed(() => [
   })),
 ])
 
+const tocScreenEntries = computed(() => [
+  {
+    id: 'about-intro',
+    ...printTocEntries.value[0],
+  },
+  {
+    id: 'about-practice',
+    ...printTocEntries.value[1],
+  },
+  ...projects.map((project, index) => ({
+    id: project.slug,
+    label: `${project.number} ${project.title}`,
+    number: String(index + 3).padStart(2, '0'),
+    description: project.summary,
+  })),
+])
+
 const screenPages = computed(() => [
   { id: 'cover' },
   { id: 'toc-screen' },
@@ -565,7 +583,7 @@ onBeforeUnmount(() => {
     />
 
     <header class="topbar">
-      <a class="topbar__mark" href="#cover">W / Z</a>
+      <a class="topbar__mark" href="#cover">TOP</a>
       <div class="topbar__actions">
         <button
           type="button"
@@ -633,6 +651,11 @@ onBeforeUnmount(() => {
           class="hero__background-image"
           aria-hidden="true"
         />
+        <img
+          :src="hakonePrintImage"
+          alt="Hakone"
+          class="hero__location-image"
+        />
         <div class="hero__inner">
           <p class="hero__eyebrow">Portfolio / 2026.06</p>
           <h1 class="hero__title">{{ siteMeta.title }}</h1>
@@ -661,20 +684,30 @@ onBeforeUnmount(() => {
           class="toc__background-image"
           aria-hidden="true"
         />
+        <img
+          :src="fujisanPrintImage"
+          alt="Fujisan"
+          class="toc-screen__location-image"
+        />
         <div class="toc-screen__inner">
           <p class="section-head__eyebrow">Contents</p>
           <div class="toc-screen__list">
             <button
-              v-for="entry in menuEntries.filter((entry) => entry.id !== 'toc-screen')"
+              v-for="entry in tocScreenEntries"
               :key="entry.id"
               type="button"
               class="toc-screen__item"
               @click="scrollToSection(entry.id)"
             >
-              {{ entry.label }}
+              <span class="toc-screen__item-number">{{ entry.number }}</span>
+              <span class="toc-screen__item-copy">
+                <strong>{{ entry.label }}</strong>
+                <small>{{ entry.description }}</small>
+              </span>
             </button>
           </div>
         </div>
+        <p class="background-credit">Background：Fujisan</p>
       </section>
 
       <section id="toc-print" class="toc-print print-page" aria-labelledby="toc-title">
